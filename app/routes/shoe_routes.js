@@ -26,7 +26,7 @@ router.get('/shoes', requireToken, (req, res, next) => {
 })
 
 // SHOW
-// GET /shoes/5a7db6c74d55bc51bdf39793
+// GET /shoes/
 router.get('/shoes/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Shoe.findById(req.params.id)
@@ -34,22 +34,6 @@ router.get('/shoes/:id', requireToken, (req, res, next) => {
     .then(handle404)
     // if `findById` is succesful, respond with 200 and "shoe" JSON
     .then(shoe => res.status(200).json({ shoe: shoe.toObject() }))
-    // if an error occurs, pass it to the handler
-    .catch(next)
-})
-
-// SHOW
-// GET /shoes/
-router.get('/mysurvey/:id', requireToken, (req, res, next) => {
-  // req.params.id will be set based on the `:id` in the route
-  const userId = req.user._id
-  Shoe.find({ owner: userId })
-    .then(shoe => {
-      return shoe.map(shoe => shoe.toObject())
-    })
-    .then(handle404)
-    .then(shoes => res.status(200).json({ shoes: shoes }))
-
     // if an error occurs, pass it to the handler
     .catch(next)
 })
@@ -72,7 +56,7 @@ router.post('/shoes', requireToken, (req, res, next) => {
 })
 
 // UPDATE
-// PATCH /shoes/5a7db6c74d55bc51bdf39793
+// PATCH /shoes/
 router.patch('/shoes/:id', requireToken, removeBlanks, (req, res, next) => {
   // if the client attempts to change the `owner` property by including a new
   // owner, prevent that by deleting that key/value pair
@@ -95,7 +79,7 @@ router.patch('/shoes/:id', requireToken, removeBlanks, (req, res, next) => {
 })
 
 // DESTROY
-// DELETE /shoes/5a7db6c74d55bc51bdf39793
+// DELETE /shoes/
 router.delete('/shoes/:id', requireToken, (req, res, next) => {
   Shoe.findById(req.params.id)
     .then(handle404)
