@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-require('./response')
 
 const shoeSchema = new mongoose.Schema({
   name: {
