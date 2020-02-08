@@ -13,6 +13,9 @@ Front-End Repo: https://github.com/mozoria/ozmike-bot
 Deployed Back-End: https://glacial-badlands-90267.herokuapp.com/
 Back-End Repo: https://github.com/mozoria/ozmike-bot-api
 
+ERD:
+https://imgur.com/gallery/ST3sJOk
+
 Technologies Used:
 React, Node, Express, MongoDB, Bootstrap
 
